@@ -19,12 +19,11 @@ else{
     PORT = 7000;
 }
 
-
 // Use the built-in middleware for parsing incoming request bodies to use req body data
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-//set up the view engine to ejs
+// Set up the view engine to ejs
 app.set('view engine','ejs');
 app.set('views','./views');
 
@@ -38,7 +37,7 @@ app.use(session({
         mongoUrl: process.env.MONGO_URL, 
         autoRemove: 'native', // remove expired sessions automatically
         ttl: 7 * 24 * 60 * 60 // set session TTL to 7 days
-      })
+    })
 }));
 
 
@@ -54,19 +53,17 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
     try {
-      const user = await User.findById(id);
-      done(null, user);
+        const user = await User.findById(id);
+        done(null, user);
     } catch (err) {
-      done(err);
+        done(err);
     }
 });
 
-
-
-//route all req to /routes
+// Route all requests to /routes
 app.use('/',require('./routes'));
 
-//listen on PORT
+// Listen on PORT
 app
   .listen(PORT)
   .on("error", function (err) {
@@ -79,4 +76,3 @@ app
 db().then((res) => {
   console.log("Database connected");
 });
-
