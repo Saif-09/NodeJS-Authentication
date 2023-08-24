@@ -1,6 +1,6 @@
 # NodeJS-Authentication-App
 Complete authentication app that lets user sign up, sign in, reset password, sign in using social accounts, also maintains log in session upto preset time.
-Click [here]([https://nodejs-authentication-app-production.up.railway.app/](https://nodejs-authentication-service.onrender.com/))
+Click [here]([(https://nodejs-authentication-service.onrender.com/])
 
 ## Features
 * Sign Up
